@@ -1,14 +1,25 @@
-import React from 'react'
-import './index.css'
+import "./index.css";
+import Button from "./components/Button";
+import Quiz from "./components/Quiz";
+import { useGlobalContext } from "./context";
 
 const App = () => {
+  const {mode} = useGlobalContext();
+
   return (
     <>
-    <div id='main-bg' className='flex h-screen justify-center items-center bg-slate-400'>
-      <button id='btn-bg' className='text-4xl rounded-lg bg-green-500 px-20 py-8 font-semibold text-white shadow-xl hover:shadow-2xl duration-100'>Take Quiz</button>
-    </div>
+      <main
+        id="main-bg"
+        className="flex h-screen justify-center items-center bg-slate-400 p-10"
+      >
+        {!mode ? (
+          <Button/>
+        ) : (
+          <Quiz/>
+        )}
+      </main>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
