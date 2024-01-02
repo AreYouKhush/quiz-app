@@ -4,7 +4,7 @@ import Quiz from "./components/Quiz";
 import { useGlobalContext } from "./context";
 
 const App = () => {
-  const {mode} = useGlobalContext();
+  const { mode } = useGlobalContext();
 
   return (
     <>
@@ -12,11 +12,7 @@ const App = () => {
         id="main-bg"
         className="flex h-screen justify-center items-center bg-slate-400 p-10"
       >
-        {!mode ? (
-          <Button/>
-        ) : (
-          <Quiz/>
-        )}
+        {mode === "home" ? <Button /> : <Quiz />}
       </main>
     </>
   );
