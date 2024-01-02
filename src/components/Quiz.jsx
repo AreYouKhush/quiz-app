@@ -9,6 +9,7 @@ const Quiz = () => {
   const [options, setOptions] = useState([]);
   const [score, setScore] = useState(0);
   const [wrong, setWrong] = useState(false);
+  const [correct, setCorrect] = useState(false);
   const maxScore = localStorage.getItem("score") || 0;
   const [category, setCategory] = useState("")
 
@@ -38,7 +39,6 @@ const Quiz = () => {
       .map((c) => ({ id: id++, opt: c, correct: correctOptionArr[id - 1] }));
     setOptions([...optionArr]);
     setFirstQ(false);
-    console.log({ optionArr , category});
   };
 
   const checkAnswer = (id) => {
@@ -46,7 +46,13 @@ const Quiz = () => {
     setOptions((prev) => prev.map((p) => ({ ...p, correct: null })));
     if (checkIfCorrect === "true") {
       setScore((prev) => prev + 1);
-      generateQuestion();
+      setCorrect(true);
+      setWrong(true);
+      setTimeout(() => {
+        setWrong(false);
+        setCorrect(false);
+        generateQuestion();
+      }, 1000)
     } else if (checkIfCorrect === "false") {
       setWrong(true);
       setTimeout(() => {
@@ -58,7 +64,7 @@ const Quiz = () => {
         }
         setWrong(false);
         changeMode();
-      }, 2000);
+      }, 1000);
     }
   };
 
@@ -122,11 +128,15 @@ const Quiz = () => {
             >
               Skip
             </button>
-          ) : (
+          ) : (!correct ? (
             <span className="px-5 py-3 text-white rounded-lg hover:opacity-85 bg-red-800 text-center font-bold text-base sm:text-2xl">
-              WRONG ANSWER!!!
+              ❌ WRONG!!!
             </span>
-          )}
+          ) : (
+            <span className="px-5 py-3 text-white rounded-lg hover:opacity-85 bg-green-800 text-center font-bold text-base sm:text-2xl">
+              ✅ Correct!!!
+            </span>
+          ))}
         </div>
       )}
     </>
