@@ -17,11 +17,11 @@ const Button = () => {
         <button
           onClick={changeMode}
           id="btn-bg"
-          className="text-4xl rounded-lg bg-green-500 px-20 py-8 font-semibold text-white shadow-xl hover:shadow-2xl duration-100"
+          className="rounded-lg bg-green-500 px-10 py-4 font-semibold text-white shadow-xl hover:shadow-2xl duration-100 text-xl sm:text-4xl sm:px-20 sm:py-8"
         >
           Take Quiz
         </button>
-      <div className="text-white text-xl">
+      <div className="text-white text-sm sm:text-base">
         Highest Score: {maxScore}
       </div>
       </div>

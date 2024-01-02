@@ -66,14 +66,14 @@ const Quiz = () => {
     <>
       <button
         onClick={changeMode}
-        className="px-5 py-3 text-white rounded-lg hover:opacity-85 bg-red-500 absolute top-5 left-5"
+        className="px-5 py-3 text-white rounded-lg hover:opacity-85 bg-red-500 absolute top-5 left-5 text-xs sm:text-base"
       >
         Home
       </button>
 
       <div className="flex items-center gap-3 absolute top-5 right-5">
-        <div className="text-white">High Score: {maxScore}</div>
-        <div className="px-5 py-3 text-white rounded-lg hover:opacity-85 bg-green-500 ">
+        <div className="text-white text-xs sm:text-base">High Score: {maxScore}</div>
+        <div className="px-5 py-3 text-white rounded-lg hover:opacity-85 bg-green-500 text-xs sm:text-base">
           Score: {score}
         </div>
       </div>
@@ -97,14 +97,14 @@ const Quiz = () => {
         </div>
       ) : (
         <div className="flex gap-6 flex-col text-3xl">
-          <div className="text-white">{question.question}</div>
-          <div className="grid grid-cols-2 gap-3 ">
+          <div className="text-white text-base sm:text-2xl">{question.question}</div>
+          <div className="grid sm:grid-cols-2 gap-3 grid-col-1">
             {options.map((o) => {
               return (
                 <button
                   key={o.id}
                   id="btn-bg"
-                  className="px-5 py-3 text-white rounded-lg hover:opacity-85"
+                  className="px-2 py-1 text-white rounded-lg hover:opacity-85 text-sm sm:text-xl sm:py-3 sm:px-5"
                   onClick={() => {
                     checkAnswer(o.id);
                   }}
@@ -118,12 +118,12 @@ const Quiz = () => {
             <button
               onClick={generateQuestion}
               id="btn-bg"
-              className="px-5 py-3 text-white rounded-lg hover:opacity-85"
+              className="px-5 py-3 text-white rounded-lg hover:opacity-85 text-base sm:text-2xl"
             >
               Skip
             </button>
           ) : (
-            <span className="px-5 py-3 text-white rounded-lg hover:opacity-85 bg-red-800 text-center font-bold">
+            <span className="px-5 py-3 text-white rounded-lg hover:opacity-85 bg-red-800 text-center font-bold text-base sm:text-2xl">
               WRONG ANSWER!!!
             </span>
           )}
